@@ -70,7 +70,7 @@ const readDataFromCSV= (filenameWithoutExtension, filePath, column1, column2, ca
             callback(error, null);
         });
 
-    console.log("Data------>", data[filenameWithoutExtension])
+    // console.log("Data------>", data[filenameWithoutExtension])
 
 }
 
@@ -84,7 +84,7 @@ app.use('/', upload.single('inputFile'), function (req, res) {
     // req.body will hold the text fields, if there were any 
     const filename = req.file.originalname;
     const filenameWithoutExtension = removeExtension(filename);
-    console.log("File Name", filename)
+    // console.log("File Name", filename)
     console.log("FileName.extension", filenameWithoutExtension)
     readDataFromCSV(filenameWithoutExtension, filePath, 'Image', 'Results' ,(error, data) => {
         if (error) {
@@ -100,7 +100,7 @@ app.use('/', upload.single('inputFile'), function (req, res) {
     //     res.send({ [filenameWithoutExtension]: result });
     // });
 
-    console.log(req.file, req.body)
+    // console.log(req.file, req.body)
  });
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
