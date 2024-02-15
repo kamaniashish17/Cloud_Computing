@@ -12,7 +12,19 @@ const filePath = "dataset/test.csv";
 const multer = require("multer");
 
 //For uploading the image files under the images folder
-const upload = multer({ dest: "images/" });
+// Multer configuration to upload files to 'images' folder
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, "images/");
+    },
+    filename: function (req, file, cb) {
+      // Use original filename without modification
+      cb(null, file.originalname);
+    },
+  });
+  
+  // Initialize Multer with the configured storage
+  const upload = multer({ storage: storage });
 
 //Setting the port number
 const port = 5002;
