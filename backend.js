@@ -74,5 +74,5 @@ app.use("/", upload.single("inputFile"), function (req, res) {
     // Workers can share any TCP connection
     // In this case, it is an HTTP server
     app.listen(port, () => {
-      console.log(`Worker ${process.pid} started and listening on port ${port}`);
+      console.log(`Server started and listening on port ${port}`);
     });
