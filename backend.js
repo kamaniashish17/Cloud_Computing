@@ -1,8 +1,8 @@
 const express = require("express"); // required for creating the server
 const fs = require("fs"); //streaming the csv file
 const csv = require("csv-parser"); // required for parsing the file
-const cluster = require("cluster");
-const numCPUs = require("os").cpus().length;
+// const cluster = require("cluster");
+// const numCPUs = require("os").cpus().length;
 
 //initializing the instance of the server
 const app = express();
@@ -71,22 +71,8 @@ app.use("/", upload.single("inputFile"), function (req, res) {
     );
   }
 });
-if (cluster.isMaster) {
-    console.log(`Master ${process.pid} is running`);
-  
-    // Fork workers
-    for (let i = 0; i < numCPUs; i++) {
-      cluster.fork();
-    }
-  
-    cluster.on("exit", (worker, code, signal) => {
-      console.log(`Worker ${worker.process.pid} died`);
-      cluster.fork()
-    });
-  } else {
     // Workers can share any TCP connection
     // In this case, it is an HTTP server
     app.listen(port, () => {
       console.log(`Worker ${process.pid} started and listening on port ${port}`);
     });
-  }
