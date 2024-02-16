@@ -32,7 +32,7 @@ const storage = multer.diskStorage({
 const port = 5002;
 
 //Storing the csv file data in an object for lookup
-const data_csv = {};
+let data_csv = {};
 
 const readCsvFile = (filePath, column1, column2, callback) => {
   fs.createReadStream(filePath)
@@ -81,6 +81,7 @@ if (cluster.isMaster) {
   
     cluster.on("exit", (worker, code, signal) => {
       console.log(`Worker ${worker.process.pid} died`);
+      cluster.fork()
     });
   } else {
     // Workers can share any TCP connection
