@@ -5,8 +5,7 @@
   "main": "aws_ec2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
-    "start1": "nodemon backend.js"
+    "start": "nodemon backend.js"
   },
   "author": "",
   "license": "ISC",

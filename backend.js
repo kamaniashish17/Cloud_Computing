@@ -9,6 +9,8 @@ const app = express();
 
 //File Path to the CSV
 const filePath = "dataset/test.csv";
+//Assuming the same path name while testing otherwise the script will not run! Hence, please make sure 
+//the file name should be the above
 
 //For adding middleware for handling multipart/formdata
 const multer = require("multer");
@@ -20,7 +22,7 @@ const storage = multer.diskStorage({
       cb(null, "images/");
     },
     filename: function (req, file, cb) {
-      // Use original filename without modification
+      // Used original filename without modification
       cb(null, file.originalname);
     },
   });
@@ -71,8 +73,6 @@ app.use("/", upload.single("inputFile"), function (req, res) {
     );
   }
 });
-    // Workers can share any TCP connection
-    // In this case, it is an HTTP server
     app.listen(port, () => {
       console.log(`Server started and listening on port ${port}`);
     });

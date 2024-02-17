@@ -2,5 +2,11 @@
 /dist
 /.parcel-cache
 /coverage
-/dataset
+/scripts
+/images
 /workload_generator
+/dataset/face_images_100
+/dataset/face_images_1000
+/dataset/face_images_100.zip
+/dataset/face_images_1000.zip
+/dataset/Classification\ Results\ on\ Face\ Dataset\ \(100\ images\).csv
